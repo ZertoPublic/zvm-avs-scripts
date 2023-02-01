@@ -2,22 +2,22 @@
 
 param(
 	[Parameter(Mandatory = $true, HelpMessage = "Path to the ZVM installer")]$ZvmInstallationPath, 
-	[Parameter(Mandatory = $true, HelpMessage = "VC IP")]$VcHostName, 
-	[Parameter(Mandatory = $true, HelpMessage = "Globally unique identifier")]$AvsTenantId, 
+	[Parameter(Mandatory = $true, HelpMessage = "vCenter Server IP address")]$VcHostName, 
+	[Parameter(Mandatory = $true, HelpMessage = "Azure Active Directory Tenant ID")]$AvsTenantId, 
 	[Parameter(Mandatory = $true, HelpMessage = "Application ID")]$AvsClientId, 
-	[Parameter(Mandatory = $true, HelpMessage = "The ID of the target subscription")]$AvsSubscriptionId, 
-	[Parameter(Mandatory = $true, HelpMessage = "AWS resources that are all in the same AWS Region")]$AvsResourceGroup, 
-	[Parameter(Mandatory = $true, HelpMessage = "Private cloud name")]$AvsCloudName, 
-	[Parameter(Mandatory = $true, HelpMessage = "URL (Verify that the certificate is valid).")]$AvsTokenUrl
+	[Parameter(Mandatory = $true, HelpMessage = "Azure Subscription ID")]$AvsSubscriptionId, 
+	[Parameter(Mandatory = $true, HelpMessage = "Azure Resource Group name")]$AvsResourceGroup, 
+	[Parameter(Mandatory = $true, HelpMessage = "Azure VMware Solution private cloud name")]$AvsCloudName, 
+	[Parameter(Mandatory = $true, HelpMessage = "Application ID URI (Verify that the certificate is valid).")]$AvsTokenUrl
 	)
 
-$VcUserName = Read-Host -Prompt "Enter VC user name (right click on mouse to paste)" -AsSecureString
+$VcUserName = Read-Host -Prompt "Enter vCenter Server user name (right click on mouse to paste)" -AsSecureString
 $VcUserName = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($VcUserName))
 
-$VcPassword = Read-Host -Prompt "Enter VC password (right click on mouse to paste)" -AsSecureString
+$VcPassword = Read-Host -Prompt "Enter vCenter Server password (right click on mouse to paste)" -AsSecureString
 $VcPassword = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($VcPassword))
 
-$AvsClientSecret = Read-Host -Prompt "Enter AVS client secret (right click on mouse to paste)" -AsSecureString
+$AvsClientSecret = Read-Host -Prompt "Enter App Registration client secret (right click on mouse to paste)" -AsSecureString
 $AvsClientSecret = [Runtime.InteropServices.Marshal]::PtrToStringAuto([Runtime.InteropServices.Marshal]::SecureStringToBSTR($AvsClientSecret))
 
 Write-Host "The ZVM installation process started. Wait for the process to finish."
